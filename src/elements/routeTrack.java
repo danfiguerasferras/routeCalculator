@@ -7,7 +7,7 @@ public class routeTrack {
 	private String routeName;
 	private double totalAscension=0;
 	private double totalDescension=0;
-	private double  totalLength = 0;
+	private double totalLength = 0;
 	private int totalPoints = 0;
 	
 	
@@ -16,12 +16,29 @@ public class routeTrack {
 	}
 
 	public boolean addPoint(routePoint newRoutePoint){
-		this.routePoints[this.totalPoints] = newRoutePoint;
-		if(routePoints.length > 0){
-			distanceCalculator.calculateDistance2Points(this.routePoints[this.totalPoints-1], this.routePoints[this.totalPoints]);
+		try{
+			// Add the point to the array
+			this.routePoints[this.totalPoints] = newRoutePoint;
+			totalPoints += 1;
+			// If there's a previous point
+			if(routePoints.length > 0){
+				// calculate the distance with the last point and put it in the total
+				double distance = distanceCalculator.calculateDistance2Points(this.routePoints[this.totalPoints-1], this.routePoints[this.totalPoints]);
+				this.totalLength += distance;
+				// Calculate the altitud difference between this point and the previous one
+				double altitudeDifference = this.routePoints[this.totalPoints-1].getEle() - this.routePoints[this.totalPoints].getEle();
+				// Put it in the total
+				if(altitudeDifference > 0){
+					this.totalAscension += altitudeDifference;
+				}else{
+					this.totalDescension += altitudeDifference;
+				}
+			}
+			
+			return true;
+		}catch (Exception e) {
+			// TODO: handle exception
+			return false;
 		}
-		return false;
-	}
-	
-	
+	}	
 }
