@@ -33,7 +33,7 @@ public abstract class myLogger {
 		String logHourString = logHour.format(now);
 		// We check if the file exist
 		try {
-			String todaysRoute = logRoute+todayString;
+			String todaysRoute = logRoute+todayString+".log";
 			File logFile = new File(todaysRoute);
 			// Just wanted to leave a message
 			if(!logFile.exists()) {
