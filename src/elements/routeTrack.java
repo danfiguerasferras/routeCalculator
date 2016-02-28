@@ -14,6 +14,11 @@ public class routeTrack {
 	public routeTrack() {
 		//nothing
 	}
+	
+	public routeTrack(String name) {
+		//nothing
+		this.routeName = name;
+	}
 
 	public boolean addPoint(routePoint newRoutePoint){
 		try{
@@ -34,7 +39,7 @@ public class routeTrack {
 					this.totalDescension += altitudeDifference;
 				}
 			}
-			
+			//everything went good
 			return true;
 		}catch (Exception e) {
 			// TODO: handle exception
