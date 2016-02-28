@@ -18,7 +18,6 @@ public abstract class myLogger {
 	
 	// Needed to log things
 	static String logRoute = "C:/users/blad3r/documents/projects/java/routecalculator/logs/";
-	static FileWriter fw = null;
 	static PrintWriter pw = null;
 	static Date now = null;
 	static BufferedWriter bw;
@@ -41,8 +40,8 @@ public abstract class myLogger {
 			}else{
 				System.out.println("The file "+todayString+" already exists");
 			}
-			// We create the buffer to be able to write
-			bw = new BufferedWriter(new FileWriter(logFile));
+			// We create the buffer to be able to write (the boolean in FileWriter is to avoid overwriting)
+			bw = new BufferedWriter(new FileWriter(logFile, true));
 			bw.write(logHourString + " - DEFCON" + type + " - " + message + "\n");
 		} catch (Exception e) {
 			// TODO: handle exception
