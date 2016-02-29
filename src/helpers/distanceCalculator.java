@@ -1,28 +1,29 @@
 package helpers;
 
-import sun.rmi.runtime.Log;
 import elements.routePoint;
 
 public abstract class distanceCalculator {
 	
 	/**
-	 * @return metters of difference between two points without considering elevation
+	 * @return meters of difference between two points without considering elevation
 	 */
-	public static float calculateDistance2Points(routePoint pOrigin, routePoint pDestiny) {
-		float lat1 = 0;
-		float lng1 = 0;
-		float lat2 = 0;
-		float lng2 = 0;
-		float dist = 0;
+	public static double calculateDistance2Points(routePoint pOrigin, routePoint pDestiny) {
+		double lat1 = 0;
+		double lng1 = 0;
+		double lat2 = 0;
+		double lng2 = 0;
+		double dist = 0;
 		try{
-			lat1 = (float) pOrigin.getLat();
-			lng1 = (float) pOrigin.getLon();
-			lat2 = (float) pDestiny.getLat();
-			lng2 = (float) pDestiny.getLon();
+			lat1 = pOrigin.getLat();
+			lng1 = pOrigin.getLon();
+			lat2 = pDestiny.getLat();
+			lng2 = pDestiny.getLon();
 		}catch (Exception e) {
-			// TODO: handle exception
-			//wasn't able to cast...
+			// Record the exception in the log
+			myLogger.error(e);
 		}
+		
+		// Making all the math 
 		try{
 		    double earthRadius = 6371000; //meters
 		    double dLat = Math.toRadians(lat2-lat1);
@@ -31,12 +32,11 @@ public abstract class distanceCalculator {
 		               Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
 		               Math.sin(dLng/2) * Math.sin(dLng/2);
 		    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-		    dist = (float) (earthRadius * c);
+		    dist = (earthRadius * c);
 		}catch (Exception e) {
-			// TODO: handle exception
-			// Can't make the maths
+			// Can't make the math
+			myLogger.error(e);
 		}
-		
 	    return dist;
 	}
 }

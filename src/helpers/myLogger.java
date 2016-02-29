@@ -44,7 +44,6 @@ public abstract class myLogger {
 			bw = new BufferedWriter(new FileWriter(logFile, true));
 			bw.write(logHourString + " - DEFCON" + type + " - " + message + "\n");
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(logHourString + " - DEFCON1 - The log is crashing O.O look! -> "+e.getMessage());
 		} finally {
 			try {
@@ -55,5 +54,9 @@ public abstract class myLogger {
 				e2.printStackTrace();
 			}
 		}
+	}
+	
+	public static void error(Exception e){
+		record(ERROR, e.getMessage());
 	}
 }

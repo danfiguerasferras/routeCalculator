@@ -8,7 +8,7 @@ public class routePoint {
 	
 	
 	public routePoint() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public routePoint(double newLat, double newLon) {

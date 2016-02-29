@@ -1,6 +1,7 @@
 package elements;
 
 import helpers.distanceCalculator;
+import helpers.myLogger;
 
 public class routeTrack {
 	private routePoint[] routePoints;
@@ -16,8 +17,49 @@ public class routeTrack {
 	}
 	
 	public routeTrack(String name) {
-		//nothing
 		this.routeName = name;
+	}
+
+	/**
+	 * @return the routeName
+	 */
+	public String getRouteName() {
+		return routeName;
+	}
+
+	/**
+	 * @param routeName the routeName to set
+	 */
+	public void setRouteName(String routeName) {
+		this.routeName = routeName;
+	}
+
+	/**
+	 * @return the totalAscension
+	 */
+	public double getTotalAscension() {
+		return totalAscension;
+	}
+
+	/**
+	 * @return the totalDescension
+	 */
+	public double getTotalDescension() {
+		return totalDescension;
+	}
+
+	/**
+	 * @return the totalLength
+	 */
+	public double getTotalLength() {
+		return totalLength;
+	}
+
+	/**
+	 * @return the totalPoints
+	 */
+	public int getTotalPoints() {
+		return totalPoints;
 	}
 
 	public boolean addPoint(routePoint newRoutePoint){
@@ -42,8 +84,8 @@ public class routeTrack {
 			//everything went good
 			return true;
 		}catch (Exception e) {
-			// TODO: handle exception
+			myLogger.error(e);
 			return false;
 		}
-	}	
+	}
 }
