@@ -1,5 +1,6 @@
 package helpers;
 
+import config.configItems;
 import elements.routePoint;
 
 public abstract class distanceCalculator {
@@ -25,7 +26,8 @@ public abstract class distanceCalculator {
 		
 		// Making all the math 
 		try{
-		    double earthRadius = 6371000; //meters
+			//Mona's ass
+		    double earthRadius = itemValues.earthDiameterMetters; //meters
 		    double dLat = Math.toRadians(lat2-lat1);
 		    double dLng = Math.toRadians(lng2-lng1);
 		    double a = Math.sin(dLat/2) * Math.sin(dLat/2) +

@@ -5,7 +5,13 @@ package config;
  * Belongs to project routecalculator.
  * All rights reserved.
  */
-public final class configItems {
+public abstract class configItems {
     public static String environment="Loc";
 
+    public static boolean isLoc() {
+        if (environment == "Loc") {
+            return true;
+        }
+        return false;
+    }
 }
