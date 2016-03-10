@@ -4,7 +4,7 @@ import helpers.distanceCalculator;
 import helpers.myLogger;
 
 public class routeTrack {
-	private routePoint[] routePoints;
+	private routePoint[] routePoints; // // TODO: 10/03/2016 change this to arrayList of routePoints 
 	private String routeName;
 	private double totalAscension=0;
 	private double totalDescension=0;
@@ -62,6 +62,7 @@ public class routeTrack {
 		return totalPoints;
 	}
 
+	// // TODO: 10/03/2016 Change this to be dynamic 
 	public boolean addPoint(routePoint newRoutePoint){
 		try{
 			// Add the point to the array
