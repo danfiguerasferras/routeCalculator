@@ -17,13 +17,13 @@ public abstract class myLogger {
 	public static int FATAL = 1;
 	
 	// Needed to log things
-	static String logRoute = "";
-	static PrintWriter pw = null;
-	static Date now = null;
-	static BufferedWriter bw;
-	static String todayString;
-	static String logHourString;
-	static File logFile;
+	private static String logRoute = "";
+	private static PrintWriter pw = null;
+	private static Date now = null;
+	private static BufferedWriter bw;
+	private static String todayString;
+	private static String logHourString;
+	private static File logFile;
 
 	
 	public static void record(int type, String message){
@@ -69,7 +69,7 @@ public abstract class myLogger {
 	}
 
 	private static void getLogFilePath(){
-		if(myLogger.logRoute==""){
+		if(myLogger.logRoute.equals("")){
 			myLogger.logRoute=itemValues.getLogRoute();
 		}
 	}
