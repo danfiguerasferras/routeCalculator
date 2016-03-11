@@ -47,7 +47,7 @@ public abstract class fileTransformator {
     }
 
     private static routeTrack createRouteTrackFromGPX(XMLStreamReader sr){
-        //// TODO: 10/03/2016 We need to change the routeTrack to be dynamic before completing this. 
+        //// TODO: 10/03/2016 We need to change the routeTrack to be dynamic before completing this.
         try{
             while(sr.hasNext()) {
                 if (sr.getLocalName().equals("trkseg")) {

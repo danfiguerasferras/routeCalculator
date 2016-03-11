@@ -3,8 +3,10 @@ package elements;
 import helpers.distanceCalculator;
 import helpers.myLogger;
 
+import java.util.ArrayList;
+
 public class routeTrack {
-	private routePoint[] routePoints; // // TODO: 10/03/2016 change this to arrayList of routePoints 
+	private ArrayList<routePoint> routePoints;
 	private String routeName;
 	private double totalAscension=0;
 	private double totalDescension=0;
@@ -62,19 +64,19 @@ public class routeTrack {
 		return totalPoints;
 	}
 
-	// // TODO: 10/03/2016 Change this to be dynamic 
 	public boolean addPoint(routePoint newRoutePoint){
 		try{
 			// Add the point to the array
-			this.routePoints[this.totalPoints] = newRoutePoint;
+			this.routePoints.add(newRoutePoint);
 			totalPoints += 1;
 			// If there's a previous point
-			if(routePoints.length > 0){
+			if(routePoints.size() > 0){
 				// calculate the distance with the last point and put it in the total
-				double distance = distanceCalculator.calculateDistance2Points(this.routePoints[this.totalPoints-1], this.routePoints[this.totalPoints]);
+				routePoint rp = routePoints.get(routePoints.size()-1);
+				double distance = distanceCalculator.calculateDistance2Points(rp, newRoutePoint);
 				this.totalLength += distance;
 				// Calculate the altitud difference between this point and the previous one
-				double altitudeDifference = this.routePoints[this.totalPoints-1].getEle() - this.routePoints[this.totalPoints].getEle();
+				double altitudeDifference = rp.getEle() - newRoutePoint.getEle();
 				// Put it in the total
 				if(altitudeDifference > 0){
 					this.totalAscension += altitudeDifference;
