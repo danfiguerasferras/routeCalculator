@@ -13,7 +13,8 @@ public class main {
 		// Test methods
 		//Utests.runTests();
 		//myLogger.record(myLogger.FATAL, "Just kidding, all goes good!");
-		fileTransformator.readXMLFile("testGPX.GPX");
+		fileTransformator.readXMLFile("testGPX.gpx");
+		// TODO Test the result with .toString method
 	}
 
 }

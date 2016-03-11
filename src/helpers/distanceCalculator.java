@@ -41,4 +41,14 @@ public abstract class distanceCalculator {
 		}
 	    return dist;
 	}
+
+	public static double stringToDouble(String inputString){
+		double value = 0;
+		try {
+			value = Double.parseDouble(inputString);
+		}catch (Exception e){
+			myLogger.error(e);
+		}
+		return value;
+	}
 }

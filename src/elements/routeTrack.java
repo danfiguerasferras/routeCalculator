@@ -4,6 +4,7 @@ import helpers.distanceCalculator;
 import helpers.myLogger;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class routeTrack {
 	private ArrayList<routePoint> routePoints;
@@ -61,14 +62,22 @@ public class routeTrack {
 	 * @return the totalPoints
 	 */
 	public int getTotalPoints() {
-		return totalPoints;
+		return routePoints.size();
 	}
+
+    @Override
+    public String toString(){
+        Iterator it = routePoints.iterator();
+        while(it.hasNext()){
+            it.next().toString();
+        }
+        return "";
+    }
 
 	public boolean addPoint(routePoint newRoutePoint){
 		try{
 			// Add the point to the array
 			this.routePoints.add(newRoutePoint);
-			totalPoints += 1;
 			// If there's a previous point
 			if(routePoints.size() > 0){
 				// calculate the distance with the last point and put it in the total

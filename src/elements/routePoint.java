@@ -36,6 +36,7 @@ public class routePoint {
 		this.setIdentifier(newIdentifier);
 		return this;
 	}
+	// TODO create toString in order to be used in reouteTrack class
 
 	/**
 	 * @return the lat
