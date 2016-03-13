@@ -28,6 +28,9 @@ public abstract class distanceCalculator {
 		try{
 			//Mona's ass
 		    double earthRadius = itemValues.earthDiameterMetters; //meters
+			if(pOrigin.getEle()!=0){
+                earthRadius+=pOrigin.getEle();
+            }
 		    double dLat = Math.toRadians(lat2-lat1);
 		    double dLng = Math.toRadians(lng2-lng1);
 		    double a = Math.sin(dLat/2) * Math.sin(dLat/2) +

@@ -14,6 +14,8 @@ public class main {
 		//myLogger.record(myLogger.FATAL, "Just kidding, all goes good!");
 		routeTrack rt = fileTransformator.readXMLFile("testGPX.gpx");
         System.out.println(rt.toString());
+        System.out.println(rt.getTotalLength());
+
 	}
 
 }

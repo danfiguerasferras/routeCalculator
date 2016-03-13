@@ -3,6 +3,7 @@
  */
 package helpers;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import elements.routePoint;
 import elements.routeTrack;
 
@@ -68,6 +69,11 @@ public abstract class fileTransformator {
                         }else{
                             myLogger.debug("We have successfully added the item "+rp.toString());
                             myLogger.debug("The size of the array is now "+rt.getTotalPoints());
+                        }
+                        while (sr.hasNext() && !sr.getLocalName().equals("/trkpt")){
+                            // TODO solve this...
+                            myLogger.debug("yup");
+                            sr.next();
                         }
                     }
                 }
