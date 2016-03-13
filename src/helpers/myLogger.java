@@ -37,9 +37,6 @@ public abstract class myLogger {
 			// We create the buffer to be able to write (the boolean in FileWriter is to avoid overwriting)
 			String finalMessage = " - DEFCON" + type + " - " + message + "\n";
 			writeFile(finalMessage);
-			if(configItems.isLoc()){
-				System.out.print(finalMessage);
-			}
 		} catch (Exception e) {
 			System.out.println(logHourString + " - DEFCON1 - The log is crashing O.O look! -> "+e.getMessage());
 		} finally {
@@ -91,4 +88,15 @@ public abstract class myLogger {
 	public static void error(Exception e){
 		record(ERROR, e.getMessage());
 	}
+
+    public static void error(String s){
+        record(ERROR, s);
+    }
+
+    public static void debug(String s){
+        myLogger.record(myLogger.DEBUG, s);
+        if(configItems.isLoc()){
+            System.out.println(s);
+        }
+    }
 }

@@ -62,12 +62,12 @@ public abstract class fileTransformator {
                             rp.setLon(distanceCalculator.stringToDouble(sr.getAttributeValue(null, "lon")));
                         }
 
-                        myLogger.record(myLogger.DEBUG, "We have successfully created the item "+rp.toString());
+                        myLogger.debug("We have successfully created the item "+rp.toString());
                         if(!rt.addPoint(rp)){
-                            myLogger.record(myLogger.ERROR, "The point "+rp.toString()+" was not able to be added to the route");
+                            myLogger.error("The point "+rp.toString()+" was not able to be added to the route");
                         }else{
-                            myLogger.record(myLogger.DEBUG, "We have successfully added the item "+rp.toString());
-                            myLogger.record(myLogger.DEBUG, "The size of the array is now "+rt.getTotalPoints());
+                            myLogger.debug("We have successfully added the item "+rp.toString());
+                            myLogger.debug("The size of the array is now "+rt.getTotalPoints());
                         }
                     }
                 }
