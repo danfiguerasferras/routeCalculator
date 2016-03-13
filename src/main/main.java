@@ -1,8 +1,7 @@
 package main;
 
+import elements.routeTrack;
 import helpers.fileTransformator;
-import tests.Utests;
-import helpers.myLogger;
 
 public class main {
 
@@ -13,8 +12,8 @@ public class main {
 		// Test methods
 		//Utests.runTests();
 		//myLogger.record(myLogger.FATAL, "Just kidding, all goes good!");
-		fileTransformator.readXMLFile("testGPX.gpx");
-		// TODO Test the result with .toString method
+		routeTrack rt = fileTransformator.readXMLFile("testGPX.gpx");
+        System.out.println(rt.toString());
 	}
 
 }

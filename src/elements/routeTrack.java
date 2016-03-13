@@ -16,10 +16,12 @@ public class routeTrack {
 	
 	
 	public routeTrack() {
+        routePoints = new ArrayList<routePoint>();
 		//nothing
 	}
 	
 	public routeTrack(String name) {
+        routePoints = new ArrayList<routePoint>();
 		this.routeName = name;
 	}
 
@@ -67,21 +69,31 @@ public class routeTrack {
 
     @Override
     public String toString(){
-        Iterator it = routePoints.iterator();
-        while(it.hasNext()){
-            it.next().toString();
+        String res = "";
+		try{
+            int i = 0;
+            String aux;
+            Iterator it = this.routePoints.iterator();
+
+            while(it.hasNext()){
+                aux = "Position "+i+": "+it.next().toString();
+                System.out.println(aux);
+                res.concat(aux + "\n");
+                i++;
+            }
+        }catch (Exception e){
+            myLogger.error(e);
         }
-        return "";
+        return res;
     }
 
 	public boolean addPoint(routePoint newRoutePoint){
 		try{
-			// Add the point to the array
-			this.routePoints.add(newRoutePoint);
+            myLogger.record(myLogger.DEBUG, "We are adding "+newRoutePoint.toString());
 			// If there's a previous point
-			if(routePoints.size() > 0){
+			if(this.routePoints.size() > 0){
 				// calculate the distance with the last point and put it in the total
-				routePoint rp = routePoints.get(routePoints.size()-1);
+				routePoint rp = this.routePoints.get(this.routePoints.size()-1);
 				double distance = distanceCalculator.calculateDistance2Points(rp, newRoutePoint);
 				this.totalLength += distance;
 				// Calculate the altitud difference between this point and the previous one
@@ -93,6 +105,8 @@ public class routeTrack {
 					this.totalDescension += altitudeDifference;
 				}
 			}
+            // Add the point to the array
+            this.routePoints.add(newRoutePoint);
 			//everything went good
 			return true;
 		}catch (Exception e) {

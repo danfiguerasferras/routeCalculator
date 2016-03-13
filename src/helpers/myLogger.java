@@ -1,5 +1,7 @@
 package helpers;
 
+import config.configItems;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -35,6 +37,9 @@ public abstract class myLogger {
 			// We create the buffer to be able to write (the boolean in FileWriter is to avoid overwriting)
 			String finalMessage = " - DEFCON" + type + " - " + message + "\n";
 			writeFile(finalMessage);
+			if(configItems.isLoc()){
+				System.out.print(finalMessage);
+			}
 		} catch (Exception e) {
 			System.out.println(logHourString + " - DEFCON1 - The log is crashing O.O look! -> "+e.getMessage());
 		} finally {
@@ -52,11 +57,11 @@ public abstract class myLogger {
 		String todayRoute = logRoute+todayString+".log";
 		logFile = new File(todayRoute);
 		// Just wanted to leave a message
-		if(!logFile.exists()) {
+		/*if(!logFile.exists()) {
 			System.out.println("The file "+todayString+" has been created");
 		}else{
 			System.out.println("The file "+todayString+" already exists");
-		}
+		}*/
 	}
 
 	private static void setLogDates(){

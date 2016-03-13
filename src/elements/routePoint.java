@@ -36,7 +36,25 @@ public class routePoint {
 		this.setIdentifier(newIdentifier);
 		return this;
 	}
-	// TODO create toString in order to be used in reouteTrack class
+
+	@Override
+    public String toString(){
+        String st = "{ ";
+
+        if(this.getLat()!=0){
+            st+="Latitude: "+this.getLat()+" ";
+        }
+
+        if(this.getLon()!=0) {
+            st+="Longitude: "+this.getLon()+" ";
+        }
+
+        if(this.getEle()!=0){
+            st+="Elevation: "+this.getEle()+" ";
+        }
+        st+="}";
+        return st;
+    }
 
 	/**
 	 * @return the lat

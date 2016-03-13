@@ -37,17 +37,19 @@ public abstract class fileTransformator {
         return null;
     }
 
-    public static void readXMLFile(String fileName){
+    public static routeTrack readXMLFile(String fileName){
         loadFile(fileName);
         XMLStreamReader sr = createXMLStreamReader();
         if(sr != null){
-            createRouteTrackFromGPX(sr);
+            return createRouteTrackFromGPX(sr);
         }else{
             myLogger.record(myLogger.ERROR, "The XML file was not able to be opened or transformed, we abort the process");
         }
+        return null;
     }
 
     private static routeTrack createRouteTrackFromGPX(XMLStreamReader sr){
+        routeTrack rt = new routeTrack();
         try{
             while(sr.hasNext()) {
                 if(sr.getEventType()==XMLStreamReader.START_ELEMENT) {
@@ -55,8 +57,17 @@ public abstract class fileTransformator {
                         routePoint rp = new routePoint();
                         if (sr.getAttributeValue(null, "lat") != null && !sr.getAttributeValue(null, "lat").equals("")) {
                             rp.setLat(distanceCalculator.stringToDouble(sr.getAttributeValue(null, "lat")));
-                            rp.setLat(distanceCalculator.stringToDouble(sr.getAttributeValue(null, "lon")));
-                            // TODO save it in the class and store it
+                        }
+                        if (sr.getAttributeValue(null, "lon") != null && !sr.getAttributeValue(null, "lon").equals("")) {
+                            rp.setLon(distanceCalculator.stringToDouble(sr.getAttributeValue(null, "lon")));
+                        }
+
+                        myLogger.record(myLogger.DEBUG, "We have successfully created the item "+rp.toString());
+                        if(!rt.addPoint(rp)){
+                            myLogger.record(myLogger.ERROR, "The point "+rp.toString()+" was not able to be added to the route");
+                        }else{
+                            myLogger.record(myLogger.DEBUG, "We have successfully added the item "+rp.toString());
+                            myLogger.record(myLogger.DEBUG, "The size of the array is now "+rt.getTotalPoints());
                         }
                     }
                 }
@@ -66,7 +77,7 @@ public abstract class fileTransformator {
         }catch (Exception e){
             myLogger.error(e);
         }
-        return new routeTrack();
+        return rt;
     }
 
 
