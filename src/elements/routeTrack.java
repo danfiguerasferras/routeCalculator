@@ -10,7 +10,7 @@ public class routeTrack {
 	private ArrayList<routePoint> routePoints;
 	private String routeName;
 	private double totalAscension=0;
-	private double totalDescension=0;
+	private double totalDecline =0;
 	private double totalLength = 0;
 	private int totalPoints = 0;
 	
@@ -47,10 +47,10 @@ public class routeTrack {
 	}
 
 	/**
-	 * @return the totalDescension
+	 * @return the totalDecline
 	 */
-	public double getTotalDescension() {
-		return totalDescension;
+	public double getTotalDecline() {
+		return totalDecline;
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class routeTrack {
 				if(altitudeDifference > 0){
 					this.totalAscension += altitudeDifference;
 				}else{
-					this.totalDescension += altitudeDifference;
+					this.totalDecline += altitudeDifference;
 				}
 			}
             // Add the point to the array
