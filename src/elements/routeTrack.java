@@ -12,7 +12,6 @@ public class routeTrack {
 	private double totalAscension=0;
 	private double totalDecline =0;
 	private double totalLength = 0;
-	private int totalPoints = 0;
 	
 	
 	public routeTrack() {
