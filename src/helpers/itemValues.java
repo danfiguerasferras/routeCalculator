@@ -11,13 +11,12 @@ public abstract class itemValues {
     public static double earthDiameterMetters = 6371000;
 
     /**
-     *
      * @return the Log files route depending on the environment this is running.
      */
-    public static String getLogRoute(){
-        if(configItems.isLoc()){
+    public static String getLogRoute() {
+        if (configItems.isLoc()) {
             return "C:/users/blad3r/documents/projects/java/routecalculator/logs/";
-        }else {
+        } else {
             // As the system won't be able to create the log file, print it in the debug.
             System.out.println("We're not able to recognize the environment");
             return "";
@@ -25,13 +24,12 @@ public abstract class itemValues {
     }
 
     /**
-     *
      * @return the path where the routes are stored depending on the environment.
      */
-    public static String getTracksRoute(){
-        if(configItems.isLoc()){
+    public static String getTracksRoute() {
+        if (configItems.isLoc()) {
             return "C:/users/blad3r/documents/projects/java/routecalculator/sources/routes/";
-        }else {
+        } else {
             myLogger.record(myLogger.ERROR, "We're not able to recognize the environment");
             return "";
         }

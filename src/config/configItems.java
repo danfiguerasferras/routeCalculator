@@ -6,7 +6,7 @@ package config;
  * All rights reserved.
  */
 public abstract class configItems {
-    public static String environment="Loc";
+    public static String environment = "Loc";
 
     public static boolean isLoc() {
         if (environment == "Loc") {

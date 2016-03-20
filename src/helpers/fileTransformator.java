@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package helpers;
 
@@ -17,34 +17,33 @@ import java.io.InputStream;
 
 /**
  * @author Blad3r
- *
  */
 public abstract class fileTransformator {
 
     private static String trackRoute;
     private static File fileToRead;
 
-    private static void loadFile(String fileName){
-        fileToRead = new File(itemValues.getTracksRoute()+fileName);
+    private static void loadFile(String fileName) {
+        fileToRead = new File(itemValues.getTracksRoute() + fileName);
     }
 
-    private static XMLStreamReader createXMLStreamReader(){
+    private static XMLStreamReader createXMLStreamReader() {
         try {
             InputStream is = new FileInputStream(fileToRead);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             return factory.createXMLStreamReader(is);
-        } catch (Exception e){
+        } catch (Exception e) {
             myLogger.error(e);
         }
         return null;
     }
 
-    public static routeTrack readXMLFile(String fileName){
+    public static routeTrack readXMLFile(String fileName) {
         loadFile(fileName);
         XMLStreamReader sr = createXMLStreamReader();
-        if(sr != null){
+        if (sr != null) {
             return createRouteTrackFromGPX(sr);
-        }else{
+        } else {
             myLogger.record(myLogger.ERROR, "The XML file was not able to be opened or transformed, we abort the process");
         }
         return null;
@@ -71,7 +70,7 @@ public abstract class fileTransformator {
                             myLogger.debug("We have successfully created the item " + rp.toString());
                             break;
                         case "ele":
-                                rp.setEle(distanceCalculator.stringToDouble(sr.getElementText()));
+                            rp.setEle(distanceCalculator.stringToDouble(sr.getElementText()));
                             break;
                     }
                 }
@@ -86,7 +85,7 @@ public abstract class fileTransformator {
                 sr.next();
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             myLogger.error(e);
         }
         return rt;
