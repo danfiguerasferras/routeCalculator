@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Belongs to project routecalculator.
  * All rights reserved.
  */
-public class Segment {
+public class routeSegment {
     private double idSegment;
     private ArrayList<routePoint> routePoints;
     private routePoint startPoint;
