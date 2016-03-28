@@ -10,6 +10,7 @@ import config.configItems;
 public abstract class itemValues {
     public static double earthDiameterMetters = 6371000;
 
+
     /**
      * @return the Log files route depending on the environment this is running.
      */

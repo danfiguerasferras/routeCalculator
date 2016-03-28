@@ -36,6 +36,4 @@ public class routeSegment {
     public void setEndPoint(routePoint endPoint) {
         this.endPoint = endPoint;
     }
-
-
 }

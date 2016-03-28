@@ -26,6 +26,23 @@ public abstract class myLogger {
     private static String todayString;
     private static String logHourString;
     private static File logFile;
+    private static int logLevel = 3;
+
+    public static int getLogLevel() {
+        return logLevel;
+    }
+
+    public static void setLogLevel(int logLevel) {
+        if(logLevel > 5)
+        {
+            myLogger.logLevel = 5;
+        }else if(logLevel < 0){
+            myLogger.logLevel = 1;
+        }else{
+            myLogger.logLevel = logLevel;
+        }
+
+    }
 
 
     public static void record(int type, String message) {
