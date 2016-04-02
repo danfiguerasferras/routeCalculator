@@ -20,6 +20,10 @@ public class segmentCreator {
         2: This point is in another segment
      */
     private int recording = 0;
+    private static int NOTDECLARED = 0;
+    private static int NOTCOMMON = 1;
+    private static int COMMON = 2;
+    private int maxDistanceBetweenPoints = 10;
 
     public segmentCreator() {
         this.routeSegments = new ArrayList<routeSegment>();
@@ -38,16 +42,32 @@ public class segmentCreator {
         for (int i = 0; i < rt.getTotalPoints(); i++) {
             rp = rt.getPointPerPosition(i);
             this.checkRoutePoint(rp);
+            // TODO there's the code that creates the segment pending
         }
     }
 
+    /**
+     * Checks in all the segments inside the array if the point is in there
+     * @param rp the route point we want to check
+     * @return a parameter depending on
+     */
     private int checkRoutePoint(routePoint rp){
-        routeSegment rs = new routeSegment();
+        routeSegment rs;
+        routePoint segmentRoutePoint;
+        // Check all the points in the segment
         for (int i = 0; i < routeSegments.size();i++){
             rs = routeSegments.get(i);
-            // // TODO: 02/04/2016 finish the bucle
-            //for (int j = 0;;)
+            ArrayList<routePoint> auxRoutePoints = rs.getRoutePoints();
+            for (int j = 0;j<auxRoutePoints.size();j++){
+                segmentRoutePoint = auxRoutePoints.get(j);
+                // If the distance is less than 10m
+                if(distanceCalculator.calculateDistance2Points(rp, segmentRoutePoint) < maxDistanceBetweenPoints) {
+                    this.recording = this.COMMON;
+                }else{
+                    this.recording=this.NOTCOMMON;
+                }
+            }
         }
-        return 0;
+        return this.NOTDECLARED;
     }
 }
