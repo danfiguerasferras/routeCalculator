@@ -70,12 +70,6 @@ public abstract class myLogger {
     private static void createLogFile() {
         String todayRoute = logRoute + todayString + ".log";
         logFile = new File(todayRoute);
-        // Just wanted to leave a message
-        /*if(!logFile.exists()) {
-			System.out.println("The file "+todayString+" has been created");
-		}else{
-			System.out.println("The file "+todayString+" already exists");
-		}*/
     }
 
     private static void setLogDates() {

@@ -20,13 +20,16 @@ import java.io.InputStream;
  */
 public abstract class fileTransformator {
 
-    private static String trackRoute;
     private static File fileToRead;
 
     private static void loadFile(String fileName) {
         fileToRead = new File(itemValues.getTracksRoute() + fileName);
     }
 
+    /**
+     * Internal method meant to create the XML stream reader that will help reading the file
+     * @return an XMLStreamReader item
+     */
     private static XMLStreamReader createXMLStreamReader() {
         try {
             InputStream is = new FileInputStream(fileToRead);
@@ -38,11 +41,23 @@ public abstract class fileTransformator {
         return null;
     }
 
+    /**
+     *
+     * @param fileName Name of the file that the user wants to load
+     * @return the object routeTrack with all the information of the road the user loaded
+     */
     public static routeTrack readXMLFile(String fileName) {
         loadFile(fileName);
         XMLStreamReader sr = createXMLStreamReader();
+        String extension = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
         if (sr != null) {
-            return createRouteTrackFromGPX(sr);
+            switch (extension){
+                case "gpx":
+                    return createRouteTrackFromGPX(sr);
+
+                default:
+                    myLogger.error("We can't recognize filetype "+extension);
+            }
         } else {
             myLogger.record(myLogger.ERROR, "The XML file was not able to be opened or transformed, we abort the process");
         }
@@ -54,7 +69,9 @@ public abstract class fileTransformator {
         routePoint rp = null;
         rp = new routePoint();
         try {
+            // For every item in the file
             while (sr.hasNext()) {
+                // If it's the beginning of a tag we read the content
                 if (sr.getEventType() == XMLStreamReader.START_ELEMENT) {
                     switch (sr.getLocalName()) {
                         case "trkpt":
@@ -74,7 +91,9 @@ public abstract class fileTransformator {
                             break;
                     }
                 }
+                // If it's the end of a trackPoint element
                 if (sr.getEventType() == XMLStreamReader.END_ELEMENT && sr.getLocalName().equals("trkpt")) {
+                    // We add the complete point to the array of points.
                     if (!rt.addPoint(rp)) {
                         myLogger.error("The point " + rp.toString() + " was not able to be added to the route");
                     } else {
