@@ -13,7 +13,7 @@ public class routeSegment {
     private routePoint startPoint;
     private routePoint endPoint;
 
-    public routeSegment(){
+    public routeSegment() {
         // Nothing
     }
 
@@ -39,5 +39,9 @@ public class routeSegment {
 
     public void setEndPoint(routePoint endPoint) {
         this.endPoint = endPoint;
+    }
+
+    public void addPoint(routePoint rp) {
+        this.routePoints.add(rp);
     }
 }
