@@ -66,6 +66,10 @@ public class routeTrack {
         return routePoints.size();
     }
 
+    public routePoint getPointPerPosition(int position){
+        return this.routePoints.get(position);
+    }
+
     @Override
     public String toString() {
         String res = "";

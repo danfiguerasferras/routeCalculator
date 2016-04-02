@@ -13,6 +13,10 @@ public class routeSegment {
     private routePoint startPoint;
     private routePoint endPoint;
 
+    public routeSegment(){
+        // Nothing
+    }
+
     public double getIdSegment() {
         return idSegment;
     }
