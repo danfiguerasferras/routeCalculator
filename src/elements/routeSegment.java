@@ -44,4 +44,12 @@ public class routeSegment {
     public void addPoint(routePoint rp) {
         this.routePoints.add(rp);
     }
+
+    public routePoint getPoint (int index){
+        return this.routePoints.get(index);
+    }
+
+    public int getRoutePointsSize(){
+        return this.routePoints.size();
+    }
 }
