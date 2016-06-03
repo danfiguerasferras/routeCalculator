@@ -66,7 +66,7 @@ public abstract class fileTransformator {
 
     private static routeTrack createRouteTrackFromGPX(XMLStreamReader sr) {
         routeTrack rt = new routeTrack();
-        routePoint rp = null;
+        routePoint rp;
         rp = new routePoint();
         try {
             // For every item in the file
@@ -88,6 +88,8 @@ public abstract class fileTransformator {
                             break;
                         case "ele":
                             rp.setEle(distanceCalculator.stringToDouble(sr.getElementText()));
+                            break;
+                        default:
                             break;
                     }
                 }

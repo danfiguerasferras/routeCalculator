@@ -1,6 +1,6 @@
 package helpers;
 
-import config.configItems;
+
 import elements.routePoint;
 
 public abstract class distanceCalculator {
@@ -9,12 +9,14 @@ public abstract class distanceCalculator {
      * @return meters of difference between two points without considering elevation
      */
     public static double calculateDistance2Points(routePoint pOrigin, routePoint pDestiny) {
+
         double lat1 = 0;
         double lng1 = 0;
         double lat2 = 0;
         double lng2 = 0;
         double dist = 0;
         double distWithElevation = 0;
+
         try {
             lat1 = pOrigin.getLat();
             lng1 = pOrigin.getLon();
