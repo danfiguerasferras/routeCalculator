@@ -2,9 +2,9 @@
 logs/
 
 # Compiled stuff
-# bin/
+bin/
 
-#*.class
+*.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -18,4 +18,3 @@ logs/
 hs_err_pid*
 
 .idea/workspace.xml
-#bin/
