@@ -1,5 +1,5 @@
 # Logs created on different environments.
-logs/
+*.log
 
 # Compiled stuff
 bin/

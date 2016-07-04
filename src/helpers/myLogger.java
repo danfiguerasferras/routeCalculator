@@ -55,7 +55,7 @@ public abstract class myLogger {
             String finalMessage = " - DEFCON" + type + " - " + message + "\n";
             writeFile(finalMessage);
         } catch (Exception e) {
-            System.out.println(logHourString + " - DEFCON1 - The log is crashing O.O look! -> " + e.getMessage());
+            System.out.println(logHourString + " - DEFCON1 - The log is crashing O.O -> The folder doesn't exist and I can't create it " + e.getMessage());
         } finally {
             try {
                 // Finally we close the file
@@ -92,7 +92,7 @@ public abstract class myLogger {
             bw = new BufferedWriter(new FileWriter(logFile, true));
             bw.write(myLogger.logHourString + text);
         } catch (Exception e) {
-            System.out.println(logHourString + " - DEFCON1 - The log is crashing O.O look! -> " + e.getMessage());
+            System.out.println(logHourString + " - DEFCON1 - The log is crashing O.O -> I can't write on it " + e.getMessage());
         }
     }
 
